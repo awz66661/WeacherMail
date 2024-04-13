@@ -1,19 +1,19 @@
-name: Daily Main.py Execution
+name: Daily Main.py Execution  # Workflow的名称
 
 on:
-  push:
+  push:  # 当有push事件时触发workflow
     branches:
-      - main
-  workflow_dispatch:
-  schedule:
-    - cron: "0 0 * * *" # Run every day at 00:00 UTC or 08:00 UTC+8
+      - main  # 仅在'main'分支上触发
+  workflow_dispatch:  # 允许手动触发workflow
+  schedule:  # 定时自动运行workflow
+    - cron: "0 0 * * *"  # 每天UTC时间00:00或者UTC+8时间08:00运行
 
 jobs:
-  run-main:
-    runs-on: ubuntu-latest
+  run-main:  # 定义名为'run-main'的job
+    runs-on: ubuntu-latest  # 在最新版本的Ubuntu上运行job
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - name: Checkout code  # 步骤：检出代码仓库
+        uses: actions/checkout@v2  # 使用'actions/checkout' action
 
-      - name: Run main.py
-        run: python main.py
+      - name: Run main.py  # 步骤：运行'main.py'文件
+        run: python main.py  # 使用Python运行'main.py'文件
