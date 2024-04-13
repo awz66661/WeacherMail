@@ -4,12 +4,14 @@ import smtplib
 from email.mime.text import MIMEText
 
 
-def send_mail(subject, content):
-    sender_pass = "tvioqkdxauxgecea"
-    smtp_server = "smtp.qq.com"
-    smtp_port = 465
-    sender = "2362422778@qq.com"
-    rec = "21307130326@m.fudan.edu.cn"
+sender_pass = "tvioqkdxauxgecea"
+smtp_server = "smtp.qq.com"
+smtp_port = 465
+sender = "2362422778@qq.com"
+rec = "21307130326@m.fudan.edu.cn"
+
+def send_mail(subject, content, rec=rec, sender=sender, sender_pass=sender_pass, smtp_server=smtp_server, smtp_port=smtp_port):
+
     msg = MIMEText(content)
     msg['Subject'] = subject
     msg['From'] = sender
