@@ -12,13 +12,45 @@ def main():
     humidity = weatherUtils.get_info(data, 'humidity')
     #content = f"城市: {city_name}\n天气: {Weather}\n温度: {temperature}°C\n风力: {windpower}\n湿度: {humidity}\n报告时间: {reporttime}\n"
     # Beautify the email content
-    #content = f"城市: {city_name}\n天气: {Weather}\n温度: {temperature}°C\n风力: {windpower}\n湿度: {humidity}\n报告时间: {reporttime}\n"
+    content = f"城市: {city_name}\n天气: {Weather}\n温度: {temperature}°C\n风力: {windpower}\n湿度: {humidity}\n报告时间: {reporttime}\n"
+    # Beautify the email content as HTML
+    html_content = f"""
+    <html>
+    <head>
+        <style>
+            body {{
+                font-family: Arial, sans-serif;
+            }}
+            h1 {{
+                color: #333;
+            }}
+            p {{
+                margin-bottom: 10px;
+            }}
+            .weather-info {{
+                margin-bottom: 20px;
+            }}
+            .weather-info span {{
+                font-weight: bold;
+            }}
+        </style>
+    </head>
+    <body>
+        <h1>{city_name}天气预报</h1>
+        <div class="weather-info">
+            <p><span>城市:</span> {city_name}</p>
+            <p><span>天气:</span> {Weather}</p>
+            <p><span>温度:</span> {temperature}°C</p>
+            <p><span>风力:</span> {windpower}</p>
+            <p><span>湿度:</span> {humidity}</p>
+            <p><span>报告时间:</span> {reporttime}</p>
+        </div>
+    </body>
+    </html>
+    """
 
-    # Add some styling to the email content
-    styled_content = f"<h2>城市: {city_name}</h2>\n<p>天气: {Weather}</p>\n<p>温度: {temperature}°C</p>\n<p>风力: {windpower}</p>\n<p>湿度: {humidity}</p>\n<p>报告时间: {reporttime}</p>\n"
-
-    # Send the email with the styled content
-    sendMailSmtp.send_mail(f"{reporttime}{city_name}天气", styled_content)
+    # Send the email with HTML content
+    sendMailSmtp.send_mail(f"{reporttime}{city_name}天气", content, html_content)
     #sendMailSmtp.send_mail(f"{reporttime}{city_name}天气", content)
 
 if __name__ == '__main__':
