@@ -10,9 +10,9 @@ smtp_port = 465
 sender = "2362422778@qq.com"
 rec = "21307130326@m.fudan.edu.cn"
 
-def send_mail(subject, content, rec=rec, sender=sender, sender_pass=sender_pass, smtp_server=smtp_server, smtp_port=smtp_port):
+def send_mail(subject, content, rec=rec, sender=sender, sender_pass=sender_pass, smtp_server=smtp_server, smtp_port=smtp_port, if_html=False):
 
-    msg = MIMEText(content)
+    msg = MIMEText(content, 'html' if if_html else 'plain', 'utf-8')
     msg['Subject'] = subject
     msg['From'] = sender
     msg['To'] = rec

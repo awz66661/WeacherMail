@@ -20,15 +20,19 @@ def main():
         <style>
             body {{
                 font-family: Arial, sans-serif;
+                background-color: #f2f2f2;
             }}
             h1 {{
                 color: #333;
-            }}
-            p {{
-                margin-bottom: 10px;
+                background-color: #fff;
+                padding: 10px;
+                border-radius: 5px;
             }}
             .weather-info {{
                 margin-bottom: 20px;
+                background-color: #fff;
+                padding: 10px;
+                border-radius: 5px;
             }}
             .weather-info span {{
                 font-weight: bold;
@@ -49,8 +53,63 @@ def main():
     </html>
     """
 
+    html_content1 = f"""
+<html>
+<head>
+    <style>
+        body {{
+            font-family: 'Arial', sans-serif;
+            background-size: cover;
+            color: #333;
+            padding: 20px;
+        }}
+        .container {{
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }}
+        h1 {{
+            text-align: center;
+            color: #fff;
+            background-color: #007bff;
+            padding: 20px;
+            border-radius: 10px 10px 10px 10px;
+            margin-top: 0;
+        }}
+        .weather-info {{
+            margin-bottom: 20px;
+        }}
+        .weather-info p {{
+            margin: 10px 0;
+            font-size: 18px;
+        }}
+        .weather-info span {{
+            font-weight: bold;
+        }}
+    </style>
+</head>
+<body>
+        <h1>{city_name}天气预报</h1>
+        <div class="weather-info">
+            <p><span>城市:</span> {city_name}</p>
+            <p><span>天气:</span> {Weather}</p>
+            <p><span>温度:</span> {temperature}°C</p>
+            <p><span>风力:</span> {windpower}</p>
+            <p><span>湿度:</span> {humidity}</p>
+            <p><span>报告时间:</span> {reporttime}</p>
+        </div>
+        <!--右下角按钮-->
+        <div style="text-align: center;">
+            <a href="http://47.102.193.146/" style="display: inline-block; padding: 10px 20px; background-color: #007bff; color: #fff; text-decoration: none; border-radius: 5px;">awz66661的主页</a>
+</body>
+</html>
+"""
+
     # Send the email with HTML content
-    sendMailSmtp.send_mail(f"{reporttime}{city_name}天气", content, html_content)
+    sendMailSmtp.send_mail(f"{reporttime}{city_name}天气", html_content1, if_html=True)
     #sendMailSmtp.send_mail(f"{reporttime}{city_name}天气", content)
 
 if __name__ == '__main__':
