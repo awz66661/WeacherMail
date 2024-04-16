@@ -52,7 +52,7 @@ def send(city_name, rec):
     </style>
 </head>
 <body>
-        <h1>{city_name}天气预报，爱来自猫猫</h1>
+        <h1>{city_name}天气预报，fromawz66661</h1>
         <div class="weather-info">
             <p><span>城市:</span> {city_name}</p>
             <p><span>天气:</span> {Weather}</p>
