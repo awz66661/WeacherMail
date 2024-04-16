@@ -1,10 +1,8 @@
 import sendMailSmtp, weatherUtils
 
-def main():
+def send(city_name, rec):
     # get weather data
-    city = 310000
-    city_name = '上海'
-    data = weatherUtils.get_weather(city)
+    data = weatherUtils.get_weather(city_name)
     temperature = weatherUtils.get_temperature(data)
     Weather = weatherUtils.get_info(data, 'weather')
     reporttime = weatherUtils.get_info(data, 'reporttime')
@@ -65,15 +63,19 @@ def main():
         </div>
         <!--右下角按钮-->
         <div style="text-align: center;">
-            <a href="http://47.102.193.146/" style="display: inline-block; padding: 10px 20px; background-color: #007bff; color: #fff; text-decoration: none; border-radius: 5px;">awz66661的主页</a>
+            <a href="http://awz66661.icu/" style="display: inline-block; padding: 10px 20px; background-color: #007bff; color: #fff; text-decoration: none; border-radius: 5px;">awz66661的主页</a>
 </body>
 </html>
 """
 
     # Send the email with HTML content
-    sendMailSmtp.send_mail(f"{reporttime}{city_name}天气", html_content1, if_html=True, rec="21307140116@m.fudan.edu.cn")
-    sendMailSmtp.send_mail(f"{reporttime}{city_name}天气", html_content1, if_html=True)
+    sendMailSmtp.send_mail(f"{reporttime}{city_name}天气", html_content1, if_html=True, rec=rec)
     #sendMailSmtp.send_mail(f"{reporttime}{city_name}天气", content)
 
 if __name__ == '__main__':
-    main()
+    with open("./users", "r") as f:
+        users = f.read().split('\n')
+        for user in users:
+            print(user+"---------------")
+            city_name, rec = user.split(' ')
+            send(city_name, rec)

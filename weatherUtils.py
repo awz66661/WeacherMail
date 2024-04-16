@@ -4,7 +4,9 @@
 import requests
 import json
 
-def get_weather(city_code):
+def get_weather(city_name):
+    city_codes = json.load(open('./asserts/citycode.json', 'r'))
+    city_code = city_codes[city_name]
     url = 'https://restapi.amap.com/v3/weather/weatherInfo'
     params = {
         'key': '19d1f2b8c543ccf668f6364239ea836a',
@@ -23,6 +25,5 @@ def  get_info(data, key):
 
 def get_temperature(data):
     return get_info(data, 'temperature')
-
 
 
