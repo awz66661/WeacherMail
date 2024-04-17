@@ -3,17 +3,35 @@ name: Daily Main.py Execution  # Workflow的名称
 on:
   push:  # 当有push事件时触发workflow
     branches:
-      - main  # 仅在'main'分支上触发
+      - main  # 仅在'main'分支上触发workflow
+      # 在除了'main'分支以外的分支上push代码时，触发workflow
+      #- 'main-*'
   workflow_dispatch:  # 允许手动触发workflow
   schedule:  # 定时自动运行workflow
     - cron: "0 0 * * *"  # 每天UTC时间00:00或者UTC+8时间08:00运行
 
-jobs:
-  run-main:  # 定义名为'run-main'的job
-    runs-on: ubuntu-latest  # 在最新版本的Ubuntu上运行job
+  
+  test:
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout code  # 步骤：检出代码仓库
-        uses: actions/checkout@v2  # 使用'actions/checkout' action
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-      - name: Run main.py  # 步骤：运行'main.py'文件
-        run: python main.py  # 使用Python运行'main.py'文件
+      - name: Run test.py
+        run: python test.py
+
+# #如果测试成功，合并到main分支
+#   merge:
+#     needs: test
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v2
+
+#       - name: Merge to main
+#         run: |
+#           git config --global user.email "2362422778@qq.com"
+#           git config --global user.name "awz66661"
+#           git checkout main
+#           git merge test
+#           git push

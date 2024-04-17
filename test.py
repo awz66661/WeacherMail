@@ -1,7 +1,7 @@
 from send import send
 
 if __name__ == '__main__':
-    with open("./users", "r") as f:
+    with open("./testusers", "r") as f:
         users = f.read().split('\n')
         for user in users:
             print(user+"---------------")
