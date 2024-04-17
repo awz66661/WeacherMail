@@ -10,7 +10,7 @@ on:
   schedule:  # 定时自动运行workflow
     - cron: "0 0 * * *"  # 每天UTC时间00:00或者UTC+8时间08:00运行
 
-  
+jobs:
   test:
     runs-on: ubuntu-latest
     steps:
