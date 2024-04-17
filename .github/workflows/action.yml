@@ -1,4 +1,4 @@
-name: Daily Main.py Execution  # Workflow的名称
+name: Daily send Execution  # Workflow的名称
 
 on:
   workflow_dispatch:  # 允许手动触发workflow

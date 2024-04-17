@@ -1,4 +1,4 @@
-name: Daily Main.py Execution  # Workflow的名称
+name: pushTest Execution  # Workflow的名称
 
 on:
   push:  # 当有push事件时触发workflow
