@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Run test.py
-        run: python test.py
+        run: python testAction.py
 
 # #如果测试成功，合并到main分支
 #   merge:
