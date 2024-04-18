@@ -3,6 +3,7 @@
 
 import requests
 import json
+import datetime
 
 def get_weather(city_name):
     city_codes = json.load(open('./asserts/citycode.json', 'r'))
@@ -92,4 +93,14 @@ def construct_html_content(data):
     return html_content
 
 
+def get_Current_data():
+    return datetime.date.today()
+    
 
+#http://v.juhe.cn/laohuangli/d?key=2f667a655dd31907df50b95d5bfa42e0&date=2023-07-20
+def get_huangli(data):
+    url = 'http://v.juhe.cn/laohuangli/d'
+    params = {
+        'key': '2f667a655dd31907df50b95d5bfa42e0',
+        'date': data
+    }
