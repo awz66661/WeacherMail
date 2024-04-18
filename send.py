@@ -3,7 +3,7 @@ import sendMailSmtp, weatherUtils
 def send(city_name, rec):
     # get weather data
     data = weatherUtils.get_weather(city_name)
-    temperature = weatherUtils.get_temperature(data)
+    temperature = weatherUtils.get_info(data, 'temperature')
     Weather = weatherUtils.get_info(data, 'weather')
     reporttime = weatherUtils.get_info(data, 'reporttime')
     windpower = weatherUtils.get_info(data, 'windpower')
@@ -67,8 +67,9 @@ def send(city_name, rec):
 </body>
 </html>
 """
+    html_content2 = weatherUtils.construct_html_content(data)
 
     # Send the email with HTML content
-    sendMailSmtp.send_mail(f"{reporttime}{city_name}天气", html_content1, if_html=True, rec=rec)
+    sendMailSmtp.send_mail(f"{reporttime}{city_name}天气", html_content2, if_html=True, rec=rec)
     #sendMailSmtp.send_mail(f"{reporttime}{city_name}天气", content)
 
