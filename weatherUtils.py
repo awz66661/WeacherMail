@@ -29,7 +29,7 @@ def  get_info(data, key):
 
 
 #Construct the email content as HTML
-def construct_html_content(dataweather, datahuangli):
+def construct_html_content(dataweather, datahuangli, datagpt3_5_turbo):
     #{
 #     "status": "1",
 #     "count": "1",
@@ -170,6 +170,16 @@ def construct_html_content(dataweather, datahuangli):
             .huangli-info span {{
                 font-weight: bold;
             }}
+            .gpt3-5-turbo-info {{
+                margin-bottom: 20px;
+            }}
+            .gpt3-5-turbo-info p {{
+                margin: 10px 0;
+                font-size: 18px;
+            }}
+            .gpt3-5-turbo-info span {{
+                font-weight: bold;
+            }}
         </style>
     </head>
     <body>
@@ -196,6 +206,9 @@ def construct_html_content(dataweather, datahuangli):
                 <p><span>宜:</span> {yi}</p>
                 <p><span>凶神:</span> {xiongshen}</p>
                 <p><span>忌:</span> {ji}</p>
+            </div>
+            <div class="gpt3-5-turbo-info">
+                <p><span>gpt3.5-turbo:</span> {datagpt3_5_turbo}</p>
             </div>
             <!--右下角按钮-->
             <div style="text-align: center;">

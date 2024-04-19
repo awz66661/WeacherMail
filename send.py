@@ -1,4 +1,4 @@
-import sendMailSmtp, weatherUtils
+import sendMailSmtp, weatherUtils, gptapi
 
 def send(city_name, rec):
     # get weather data
@@ -7,7 +7,19 @@ def send(city_name, rec):
     # Beautify the email content
     current_date = weatherUtils.get_Current_date()
     Huanlidata = weatherUtils.get_huangli(current_date)
-    html_content = weatherUtils.construct_html_content(Weatherdata, Huanlidata)
+    #{'reason': 'successed', 'result': {'id': '5822', 'yangli': '2024-04-18', 'yinli': '甲辰(龙)年三月初十', 'wuxing': '璧上土', 'chongsha': '冲羊(乙未)煞东', 'baiji': '辛不合酱主人不尝 丑不冠带主不还乡', 'jishen': '月空 天恩 六仪 解神 金匮 鸣犬对', 'yi': '破屋 坏垣 馀事勿取', 'xiongshen': '五虚 月破 大耗 灾煞 天火 四废 厌对 招摇', 'ji': '诸事不宜'}, 'error_code': 0}
+    HuanlidataText = f'{Huanlidata["result"]["yangli"]} {Huanlidata["result"]["yinli"]} {Huanlidata["result"]["wuxing"]} {Huanlidata["result"]["chongsha"]} {Huanlidata["result"]["baiji"]} {Huanlidata["result"]["jishen"]} {Huanlidata["result"]["yi"]} {Huanlidata["result"]["xiongshen"]} {Huanlidata["result"]["ji"]}'
+    # get gpt3.5-turbo data
+    chat_completion = gptapi.client.chat.completions.create(
+       messages=[{"role": "system", "content": HuanlidataText + "，分析今天的情况，主要是yi和ji。"}],
+       model="gpt-3.5-turbo",
+       max_tokens=50,
+       temperature=0.5
+    )
+    print(chat_completion.choices[0].message.content)
+
+
+    html_content = weatherUtils.construct_html_content(Weatherdata, Huanlidata, chat_completion.choices[0].message.content)
 
     # Send the email with HTML content
     sendMailSmtp.send_mail(f"{current_date}{city_name}天气", html_content, if_html=True, rec=rec)
