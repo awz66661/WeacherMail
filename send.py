@@ -13,7 +13,7 @@ def send(city_name, rec):
     chat_completion = gptapi.client.chat.completions.create(
        messages=[{"role": "system", "content": HuanlidataText + "，分析今天的情况，主要是yi和ji。"}],
        model="gpt-3.5-turbo",
-       max_tokens=50,
+       max_tokens=200,
        temperature=0.5
     )
     print(chat_completion.choices[0].message.content)
