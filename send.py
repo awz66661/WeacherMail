@@ -18,8 +18,11 @@ def send(city_name, rec):
     )
     print(chat_completion.choices[0].message.content)
 
+    Newsdata = weatherUtils.get_news()
 
-    html_content = weatherUtils.construct_html_content(Weatherdata, Huanlidata, chat_completion.choices[0].message.content)
+
+
+    html_content = weatherUtils.construct_html_content(Weatherdata, Huanlidata, chat_completion.choices[0].message.content, Newsdata)
 
     # Send the email with HTML content
     sendMailSmtp.send_mail(f"{current_date}{city_name}天气", html_content, if_html=True, rec=rec)
