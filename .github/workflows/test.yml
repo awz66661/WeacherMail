@@ -28,7 +28,7 @@ jobs:
           APIAUTH: ${{ secrets.APIAUTH }}
         run: python testAction.py
 
-# #如果测试成功，合并到main分支
+##如果测试成功，合并到main分支
 #   merge:
 #     needs: test
 #     runs-on: ubuntu-latest
