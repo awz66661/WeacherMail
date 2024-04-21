@@ -4,11 +4,30 @@ import smtplib
 from email.mime.text import MIMEText
 
 
-sender_pass = "tvioqkdxauxgecea"
-smtp_server = "smtp.qq.com"
-smtp_port = 465
-sender = "2362422778@qq.com"
-rec = "21307130326@m.fudan.edu.cn"
+# sender_pass = "tvioqkdxauxgecea"
+# smtp_server = "smtp.qq.com"
+# smtp_port = 465
+# sender = "2362422778@qq.com"
+# rec = "21307130326@m.fudan.edu.cn"
+
+import requests
+import json
+import os
+url = 'http://awz66661.icu:8000/defaultemail'
+key = os.environ.get("APIAUTH")
+print(key)
+params = {
+    "key": key
+}
+
+response = requests.get(url, params=params)
+defaultemail = json.loads(response.text)
+sender_pass = defaultemail["sender_pass"]
+smtp_server = defaultemail["smtp_server"]
+smtp_port = defaultemail["smtp_port"]
+sender = defaultemail["sender"]
+rec = defaultemail["rec"]
+
 
 def send_mail(subject, content, rec=rec, sender=sender, sender_pass=sender_pass, smtp_server=smtp_server, smtp_port=smtp_port, if_html=False):
 
