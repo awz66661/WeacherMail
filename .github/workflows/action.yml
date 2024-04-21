@@ -19,6 +19,8 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run test.py
+        env:
+          APIAUTH: ${{ secrets.APIAUTH }}
         run: python main.py
 
 # #如果测试成功，合并到main分支
