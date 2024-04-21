@@ -20,11 +20,12 @@ jobs:
       - name: install requirements
         run: |
           python -m pip install --upgrade pip
-          pwd
           pip install -r requirements.txt
 
 
       - name: Run test.py
+        env:
+          APIAUTH: ${{ secrets.APIAUTH }}
         run: python testAction.py
 
 # #如果测试成功，合并到main分支
