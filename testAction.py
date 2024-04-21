@@ -14,7 +14,8 @@ if __name__ == '__main__':
     import requests
     import json
     url = 'http://awz66661.icu:8000/users/test'
-    key = os.environ.get("APIAUTH")
+    #key = os.environ.get("APIAUTH")
+    key = "api930080"
     params = {
         "key": key
     }
