@@ -14,8 +14,9 @@ if __name__ == '__main__':
     import requests
     import json
     url = 'http://awz66661.icu:8000/users/test'
-    #key = os.environ.get("APIAUTH")
-    key = "api930080"
+    key = os.environ.get("APIAUTH")
+    # key = "api930080"
+    print(key)
     params = {
         "key": key
     }
@@ -23,6 +24,7 @@ if __name__ == '__main__':
     response = requests.get(url, params=params)
    #{"21307130326@m.fudan.edu.cn":"上海市","591141729@qq.com":"北京市"}
     users = json.loads(response.text)
+    print(users)
     for rec, city_name in users.items():
         print(rec, city_name)
         send(city_name, rec)
