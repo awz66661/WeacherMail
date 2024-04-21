@@ -4,12 +4,6 @@ import smtplib
 from email.mime.text import MIMEText
 
 
-# sender_pass = "tvioqkdxauxgecea"
-# smtp_server = "smtp.qq.com"
-# smtp_port = 465
-# sender = "2362422778@qq.com"
-# rec = "21307130326@m.fudan.edu.cn"
-
 import requests
 import json
 import os
