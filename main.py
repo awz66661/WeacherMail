@@ -6,7 +6,6 @@ if __name__ == '__main__':
     import os
     url = 'http://awz66661.icu:8000/users'
     key = os.environ.get("APIAUTH")
-    # key = "api930080"
     print(key)
     params = {
         "key": key
