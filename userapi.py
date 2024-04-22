@@ -5,8 +5,8 @@ import os
 class userAPI:
     def __init__(self):
         self.url = 'http://awz66661.icu:8000'
-        # self.key = os.environ.get("APIAUTH")
-        self.key = 'api930080'
+        self.key = os.environ.get("APIAUTH")
+        #self.key = 'api930080'
 
     def getusers(self):
         response = requests.get(self.url + '/users', params={"key": self.key})
