@@ -1,6 +1,3 @@
-# use requests to get weather data from amap weather api
-# use json to parse the data
-
 import requests
 import json
 import datetime
@@ -28,7 +25,6 @@ def  get_info(data, key):
     return temperature
 
 
-#Construct the email content as HTML
 def construct_html_content(dataweather, datahuangli, datagpt3_5_turbo, datanews):
 
     city_name = dataweather['forecasts'][0]['city']

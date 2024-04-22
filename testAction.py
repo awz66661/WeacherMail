@@ -1,5 +1,4 @@
 from send import send
-import os
 import userapi
 
 if __name__ == '__main__':
