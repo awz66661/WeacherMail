@@ -178,7 +178,6 @@ def get_Current_date():
     return datetime.date.today()
     
 
-#http://v.juhe.cn/laohuangli/d?key=2f667a655dd31907df50b95d5bfa42e0&date=2023-07-20
 def get_huangli(data):
     url = 'http://v.juhe.cn/laohuangli/d'
     params = {
