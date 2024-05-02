@@ -168,7 +168,7 @@ def construct_html_content(dataweather, datahuangli, datagpt3_5_turbo, datanews,
                 #     <li>{history_today_list[4][0]}: {history_today_list[4][1]}: {history_today_list[4][2]}</li>
                 # </ul>
     history_today_html = ""
-    history_today_list += "<ul><div class=\"history-today-info\"><h2>历史上的今天</h2>"
+    history_today_html += "<ul><div class=\"history-today-info\"><h2>历史上的今天</h2>"
     for history_today in history_today_list:
         history_today_html += f"<li>{history_today[0]}: {history_today[1]}: {history_today[2]}</li>"
     history_today_html += "</ul></div>"
