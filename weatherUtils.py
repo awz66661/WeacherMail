@@ -147,8 +147,31 @@ def construct_html_content(dataweather, datahuangli, datagpt3_5_turbo, datanews,
     for news in datanews['result']['data']:
         title_url_list.append([news['url'], news['title']])
 
-    
 
+            #     <div class="news-info">
+            #     <a href="{title_url_list[0][0]}">{title_url_list[0][1]}</a>
+            #     <a href="{title_url_list[1][0]}">{title_url_list[1][1]}</a>
+            #     <a href="{title_url_list[2][0]}">{title_url_list[2][1]}</a>
+            #     <a href="{title_url_list[3][0]}">{title_url_list[3][1]}</a>
+            # </div>
+    news_html = ""
+    news_html += "<div class=\"news-info\">"
+    for news in title_url_list:
+        news_html += f"<a href=\"{news[0]}\">{news[1]}</a>"
+    news_html += "</div>"
+    
+                #     <ul>
+                #     <li>{history_today_list[0][0]}: {history_today_list[0][1]}: {history_today_list[0][2]}</li>
+                #     <li>{history_today_list[1][0]}: {history_today_list[1][1]}: {history_today_list[1][2]}</li>
+                #     <li>{history_today_list[2][0]}: {history_today_list[2][1]}: {history_today_list[2][2]}</li>
+                #     <li>{history_today_list[3][0]}: {history_today_list[3][1]}: {history_today_list[3][2]}</li>
+                #     <li>{history_today_list[4][0]}: {history_today_list[4][1]}: {history_today_list[4][2]}</li>
+                # </ul>
+    history_today_html = ""
+    history_today_list += "<ul><div class=\"history-today-info\"><h2>历史上的今天</h2>"
+    for history_today in history_today_list:
+        history_today_html += f"<li>{history_today[0]}: {history_today[1]}: {history_today[2]}</li>"
+    history_today_html += "</ul></div>"
     
     html_content = f"""
     <html>
@@ -266,22 +289,10 @@ def construct_html_content(dataweather, datahuangli, datagpt3_5_turbo, datanews,
             <div class="gpt3-5-turbo-info">
                 <p><span>gpt3.5-turbo:</span> {datagpt3_5_turbo}</p>
             </div>
-            <div class="news-info">
-                <a href="{title_url_list[0][0]}">{title_url_list[0][1]}</a>
-                <a href="{title_url_list[1][0]}">{title_url_list[1][1]}</a>
-                <a href="{title_url_list[2][0]}">{title_url_list[2][1]}</a>
-                <a href="{title_url_list[3][0]}">{title_url_list[3][1]}</a>
-            </div>
-            <div class="history-today-info">
-                <h2>历史上的今天</h2>
-                <ul>
-                    <li>{history_today_list[0][0]}: {history_today_list[0][1]}: {history_today_list[0][2]}</li>
-                    <li>{history_today_list[1][0]}: {history_today_list[1][1]}: {history_today_list[1][2]}</li>
-                    <li>{history_today_list[2][0]}: {history_today_list[2][1]}: {history_today_list[2][2]}</li>
-                    <li>{history_today_list[3][0]}: {history_today_list[3][1]}: {history_today_list[3][2]}</li>
-                    <li>{history_today_list[4][0]}: {history_today_list[4][1]}: {history_today_list[4][2]}</li>
-                </ul>
-            </div>
+    """
+    html_content += news_html
+    html_content += history_today_html
+    html_content +="""
             <!--右下角按钮-->
             <div style="text-align: center;">
                 <a href="http://awz66661.icu/" style="display: inline-block; padding: 10px 20px; background-color: #007bff; color: #fff; text-decoration: none; border-radius: 5px;">awz66661的主页</a>
