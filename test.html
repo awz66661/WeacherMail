@@ -1,0 +1,137 @@
+<html>
+<head>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-size: cover;
+            color: #333;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #fff;
+            background-color: #007bff;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 0;
+        }
+        .weather-value{
+            text-align: center;
+            color: #000000;
+            background-color: #67ff8f15;
+            padding: 20px;
+            border-radius: 10px;
+            font-size: 40px;
+            margin-top: 0;
+        }
+        .weather-status{
+            text-align: center;
+            color: #000000;
+            background-color: #67ff8f15;
+            padding: 20px;
+            border-radius: 10px;
+            font-size: 40px;
+            margin-top: 0;
+        }
+        .weather-info {
+            margin-bottom: 20px;
+        }
+        .weather-info p {
+            margin: 10px 0;
+            font-size: 18px;
+        }
+        .weather-info span {
+            font-weight: bold;
+        }
+        .huangli-info {
+            margin-bottom: 20px;
+        }
+        .huangli-info p {
+            margin: 10px 0;
+            font-size: 18px;
+        }
+        .huangli-info span {
+            font-weight: bold;
+        }
+        .gpt3-5-turbo-info {
+            margin-bottom: 20px;
+        }
+        .gpt3-5-turbo-info p {
+            margin: 10px 0;
+            font-size: 18px;
+        }
+        .gpt3-5-turbo-info span {
+            font-weight: bold;
+        }
+        .news-info {
+            margin-bottom: 20px;
+        }
+        .news-info a {
+            display: block;
+            margin: 10px 0;
+            font-size: 18px;
+            text-decoration: none;
+            color: #0032ff; /* do not use black color */
+        }
+        .news-info a:hover {
+            color: #007bff;
+        }
+        .history-today-info {
+            margin-bottom: 20px;
+        }
+        .history-today-info h2 {
+            margin: 10px 0;
+            font-size: 24px;
+        }
+        .history-today-info ul {
+            list-style: none;
+            padding: 0;
+        }
+        .history-today-info li {
+            margin: 10px 0;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <h1>{city_name}天气预报、黄历</h1>
+    <h2>from awz66661</h2>
+    <div class="weather-info">
+        <p><span>报告时间:</span> {reporttime}</p>
+        <p class="weather-status"><span>白天天气:</span> {dayweather} <span>温度:</span> {daytemp}°C</p>
+        <p class="weather-status"><span>夜晚天气:</span> {nightweather} <span>温度:</span> {nighttemp}°C</p>
+        <p><span>白天风向:</span> {daywind}</p>
+        <p><span>夜晚风向:</span> {nightwind}</p>
+        <p><span>白天风力:</span> {daypower}</p>
+        <p><span>夜晚风力:</span> {nightpower}</p>
+    </div>
+    <div class="huangli-info">
+        <p><span>阳历:</span> {yangli}</p>
+        <p><span>阴历:</span> {yinli}</p>
+        <p><span>五行:</span> {wuxing}</p>
+        <p><span>冲煞:</span> {chongsha}</p>
+        <p><span>白忌:</span> {baiji}</p>
+        <p><span>吉神:</span> {jishen}</p>
+        <p><span>宜:</span> {yi}</p>
+        <p><span>凶神:</span> {xiongshen}</p>
+        <p><span>忌:</span> {ji}</p>
+    </div>
+    <div class="gpt3-5-turbo-info">
+        <p><span>gpt3.5-turbo:</span> {datagpt3_5_turbo}</p>
+    </div>
+
+    
+    <!--右下角按钮-->
+    <div style="text-align: center;">
+        <a href="http://awz66661.icu/" style="display: inline-block; padding: 10px 20px; background-color: #007bff; color: #fff; text-decoration: none; border-radius: 5px;">awz66661的主页</a>
+    </div>
+</body>
+</html>

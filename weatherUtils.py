@@ -135,6 +135,15 @@ def construct_html_content(dataweather, datahuangli, datagpt3_5_turbo, datanews,
                 text-decoration: none;
                 color: #0032ff #do not use black color
             }}
+            .weather-status{{
+                text-align: center;
+                color: #000000;
+                background-color: #67ff8f15;
+                padding: 20px;
+                border-radius: 10px;
+                font-size: 40px;
+                margin-top: 0;
+            }}
             .news-info a:hover {{
                 color: #007bff;
             }}
@@ -162,10 +171,8 @@ def construct_html_content(dataweather, datahuangli, datagpt3_5_turbo, datanews,
             <h2>from awz66661</h2>
             <div class="weather-info">
                 <p><span>报告时间:</span> {reporttime}</p>
-                <p><span>白天天气:</span> {dayweather}</p>
-                <p><span>夜晚天气:</span> {nightweather}</p>
-                <p><span>白天温度:</span> {daytemp}°C</p>
-                <p><span>夜晚温度:</span> {nighttemp}°C</p>
+                <p class="weather-status"><span>白天天气:</span> {dayweather} <span>温度:</span> {daytemp}°C</p>
+                <p class="weather-status"><span>夜晚天气:</span> {nightweather} <span>温度:</span> {nighttemp}°C</p>
                 <p><span>白天风向:</span> {daywind}</p>
                 <p><span>夜晚风向:</span> {nightwind}</p>
                 <p><span>白天风力:</span> {daypower}</p>
