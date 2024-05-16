@@ -19,7 +19,7 @@ def send(city_name, rec):
 
 
 
-    html_content = weatherUtils.construct_html_content(Weatherdata, Huanlidata, chat_completion.choices[0].message.content, Newsdata, Historydata)
+    html_content = weatherUtils.construct_html_content(Weatherdata, Huanlidata, chat_completion.choices[0].message.content, Newsdata)
 
     # Send the email with HTML content
     sendMailSmtp.send_mail(f"{current_date}{city_name}天气", html_content, if_html=True, rec=rec)
