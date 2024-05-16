@@ -27,3 +27,6 @@ class userAPI:
     def deleteuser(self, email):
         response = requests.delete(self.url + "/users", params={"key": self.key, "email": email})
         return json.loads(response.text)
+
+api = userAPI()
+print(api.gettest())

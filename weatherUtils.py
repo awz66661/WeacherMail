@@ -25,7 +25,7 @@ def  get_info(data, key):
     return temperature
 
 
-def construct_html_content(dataweather, datahuangli, datagpt3_5_turbo, datanews, datahistorytoday):
+def construct_html_content(dataweather, datahuangli, datagpt3_5_turbo, datanews, datahistorytoday=None):
 
     city_name = dataweather['forecasts'][0]['city']
     reporttime = dataweather['forecasts'][0]['reporttime']
@@ -48,8 +48,8 @@ def construct_html_content(dataweather, datahuangli, datagpt3_5_turbo, datanews,
     xiongshen = datahuangli['result']['xiongshen']
     ji = datahuangli['result']['ji']
     history_today_list = []
-    for history_today in datahistorytoday['data']['list']:
-        history_today_list.append([history_today['time'], history_today['title'], history_today['desc']])
+    # for history_today in datahistorytoday['data']['list']:
+    #     history_today_list.append([history_today['time'], history_today['title'], history_today['desc']])
 
 
     title_url_list = []
@@ -63,11 +63,11 @@ def construct_html_content(dataweather, datahuangli, datagpt3_5_turbo, datanews,
         news_html += f"<a href=\"{news[0]}\">{news[1]}</a>"
     news_html += "</div>"
     
-    history_today_html = ""
-    history_today_html += "<ul><div class=\"history-today-info\"><h2>历史上的今天</h2>"
-    for history_today in history_today_list:
-        history_today_html += f"<li>{history_today[0]}: {history_today[1]}: {history_today[2]}</li>"
-    history_today_html += "</ul></div>"
+    # history_today_html = ""
+    # history_today_html += "<ul><div class=\"history-today-info\"><h2>历史上的今天</h2>"
+    # for history_today in history_today_list:
+    #     history_today_html += f"<li>{history_today[0]}: {history_today[1]}: {history_today[2]}</li>"
+    # history_today_html += "</ul></div>"
     
     html_content = f"""
     <html>
@@ -194,7 +194,7 @@ def construct_html_content(dataweather, datahuangli, datagpt3_5_turbo, datanews,
             </div>
     """
     html_content += news_html
-    html_content += history_today_html
+    # html_content += history_today_html
     html_content +="""
             <!--右下角按钮-->
             <div style="text-align: center;">

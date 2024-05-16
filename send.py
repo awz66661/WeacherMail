@@ -5,7 +5,7 @@ def send(city_name, rec):
     Weatherdata = weatherUtils.get_weather(city_name)
     current_date = weatherUtils.get_Current_date()
     Huanlidata = weatherUtils.get_huangli(current_date)
-    Historydata = weatherUtils.get_history_today()
+    #Historydata = weatherUtils.get_history_today()
 
     chat_completion = gptapi.client.chat.completions.create(
        messages=[{"role": "system", "content": str(Huanlidata) + "，分析今天的情况，主要是宜和忌。用平常的语气总结，不要只是简单的复述。"}],
